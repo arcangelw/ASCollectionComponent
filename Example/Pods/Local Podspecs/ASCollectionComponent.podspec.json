@@ -1,0 +1,26 @@
+{
+  "name": "ASCollectionComponent",
+  "version": "0.1.0",
+  "summary": "A short description of ASCollectionComponent.",
+  "homepage": "https://github.com/arcangelw/ASCollectionComponent",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "arcangelw": "wuzhezmc@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/arcangelw/ASCollectionComponent.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "ASCollectionComponent/Classes/**/*",
+  "dependencies": {
+    "Texture": [
+
+    ]
+  }
+}

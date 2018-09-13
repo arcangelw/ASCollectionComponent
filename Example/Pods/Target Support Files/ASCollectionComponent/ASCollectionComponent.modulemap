@@ -1,0 +1,6 @@
+framework module ASCollectionComponent {
+  umbrella header "ASCollectionComponent-umbrella.h"
+
+  export *
+  module * { export * }
+}

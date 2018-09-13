@@ -7,6 +7,7 @@
 //
 
 #import "ASAppDelegate.h"
+#import <AsyncDisplayKit/AsyncDisplayKit.h>
 
 @implementation ASAppDelegate
 
