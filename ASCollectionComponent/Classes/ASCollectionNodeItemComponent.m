@@ -8,6 +8,15 @@
 
 @implementation ASCollectionNodeItemComponent
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _size = ASComponentSizeAutomaticDimension;
+    }
+    return self;
+}
+
 - (NSInteger)numberOfSectionsInCollectionNode:(ASCollectionNode *)collectionNode {
     return 1;
 }
@@ -18,22 +27,11 @@
 
 - (ASSizeRange)collectionNode:(ASCollectionNode *)collectionNode constrainedSizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGSize size = self.size;
-    BOOL autoWidth = size.width == ASComponentAutomaticDimension;
-    BOOL autoHeight = size.height == ASComponentAutomaticDimension;
-    UIEdgeInsets inset = UIEdgeInsetsZero;
-    if (autoWidth || autoHeight) {
-        inset = [self.rootComponent collectionView:collectionNode.view
-                                            layout:collectionNode.collectionViewLayout
-                            insetForSectionAtIndex:indexPath.section];
-    }
-    if (autoWidth) {
-        size.width = MAX(collectionNode.frame.size.width - inset.left - inset.right, 0);
-    }
-    if (autoHeight) {
-        size.height = MAX(collectionNode.frame.size.height - inset.top - inset.bottom, 0);
-    }
-    return CGSizeEqualToSize(size, CGSizeZero) ? ASSizeRangeUnconstrained : ASSizeRangeMake(size);
+    return ASComponentNodeConstrainedSizeForScrollDirection(collectionNode.view, self.size, ^UIEdgeInsets{
+        return [self.rootComponent collectionView:collectionNode.view
+                                           layout:collectionNode.collectionViewLayout
+                           insetForSectionAtIndex:indexPath.section];
+    });
 }
 
 @end

@@ -6,12 +6,25 @@
 #import <UIKit/UIKit.h>
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 // When width or height is auto, it will use collectionView.size
 // When inset lineSpacing itemSpacing is auto, it will use CollectionLayout's property.
-extern const CGFloat ASComponentAutomaticDimension;
+UIKIT_EXTERN const CGFloat ASComponentAutomaticDimension;
+UIKIT_EXTERN const CGSize ASComponentSizeAutomaticDimension;
+UIKIT_EXTERN const UIEdgeInsets ASComponentInsetsAutomaticDimension;
+
+/// isInterop时，Swift无法 return nil,提供一个emptyCellNode
+UIKIT_EXTERN ASCellNode * ASComponentEmptyCellNode();
+
+typedef UIEdgeInsets(^ASComponentNodeConstrainedInsetsGetter)(void);
+
+UIKIT_EXTERN ASSizeRange ASComponentNodeConstrainedSizeForScrollDirection(ASCollectionView *collectionView, CGSize size, ASComponentNodeConstrainedInsetsGetter getter);
+
+UIKIT_EXTERN CGSize ASComponentViewSizeForScrollDirection(ASCollectionView *collectionView, CGSize size, ASComponentNodeConstrainedInsetsGetter getter);
 
 @class ASCollectionNodeRootComponent;
-@protocol ASCollectionNodeComponent <NSObject, ASCollectionDelegateFlowLayout, ASCollectionDataSource, UICollectionViewDelegateFlowLayout>
+@protocol ASCollectionNodeComponent <NSObject, ASCollectionDelegateFlowLayout, ASCollectionDelegateInterop, ASCollectionDataSourceInterop, UICollectionViewDelegateFlowLayout>
 
 @end
 
@@ -50,3 +63,5 @@ extern const CGFloat ASComponentAutomaticDimension;
 @property (readonly, nonatomic) NSInteger section;
 
 @end
+
+NS_ASSUME_NONNULL_END

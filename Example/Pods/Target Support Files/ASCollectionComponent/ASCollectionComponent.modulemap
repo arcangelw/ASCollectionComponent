@@ -1,4 +1,4 @@
-framework module ASCollectionComponent {
+module ASCollectionComponent {
   umbrella header "ASCollectionComponent-umbrella.h"
 
   export *

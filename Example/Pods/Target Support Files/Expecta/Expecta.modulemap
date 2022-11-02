@@ -1,4 +1,4 @@
-framework module Expecta {
+module Expecta {
   umbrella header "Expecta-umbrella.h"
 
   export *

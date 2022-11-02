@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		102BF8D70E4C4EB41B881FF5 /* Pods_ASCollectionComponent_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC754BC06479B68867CA9166 /* Pods_ASCollectionComponent_Tests.framework */; };
 		339A30C02147D3200021418E /* ASCollectionNodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A30BF2147D3200021418E /* ASCollectionNodeController.m */; };
 		339A30C32147D45E0021418E /* ASMainComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 339A30C22147D45E0021418E /* ASMainComponent.m */; };
 		33FA04612148B88A0011A237 /* ASCollectionSectionPinToVisibleBoundsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FA04602148B88A0011A237 /* ASCollectionSectionPinToVisibleBoundsLayout.m */; };
@@ -25,7 +24,8 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		EAABD38F5877AF99844B610C /* Pods_ASCollectionComponent_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA693995AAA3294C2542C397 /* Pods_ASCollectionComponent_Example.framework */; };
+		A028BD9A1016ECC60511FA8C /* libPods-ASCollectionComponent_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FACD06F4407607C016A5CCB /* libPods-ASCollectionComponent_Tests.a */; };
+		A14BDF74E9FDC3B0BA5DBDA9 /* libPods-ASCollectionComponent_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B70B80DCE47F87D21885611 /* libPods-ASCollectionComponent_Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,11 +40,15 @@
 
 /* Begin PBXFileReference section */
 		055AB9AB6B68757DC13CE758 /* Pods-ASCollectionComponent_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASCollectionComponent_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ASCollectionComponent_Example/Pods-ASCollectionComponent_Example.release.xcconfig"; sourceTree = "<group>"; };
+		0B70B80DCE47F87D21885611 /* libPods-ASCollectionComponent_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ASCollectionComponent_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C0D9055A9C371B474E05887 /* Pods-ASCollectionComponent_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASCollectionComponent_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ASCollectionComponent_Example/Pods-ASCollectionComponent_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		2FACD06F4407607C016A5CCB /* libPods-ASCollectionComponent_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ASCollectionComponent_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		339A30BE2147D3200021418E /* ASCollectionNodeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASCollectionNodeController.h; sourceTree = "<group>"; };
 		339A30BF2147D3200021418E /* ASCollectionNodeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASCollectionNodeController.m; sourceTree = "<group>"; };
 		339A30C12147D45E0021418E /* ASMainComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASMainComponent.h; sourceTree = "<group>"; };
 		339A30C22147D45E0021418E /* ASMainComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASMainComponent.m; sourceTree = "<group>"; };
+		33DAD73A2911FB2B00DCCC6D /* ASCollectionComponent_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ASCollectionComponent_Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		33DAD73D2911FB6300DCCC6D /* ASCollectionComponent_Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ASCollectionComponent_Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		33FA045F2148B88A0011A237 /* ASCollectionSectionPinToVisibleBoundsLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASCollectionSectionPinToVisibleBoundsLayout.h; sourceTree = "<group>"; };
 		33FA04602148B88A0011A237 /* ASCollectionSectionPinToVisibleBoundsLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASCollectionSectionPinToVisibleBoundsLayout.m; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* ASCollectionComponent_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASCollectionComponent_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,8 +75,6 @@
 		948B103E50F0AE431BBDEECF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		BB16FDD9F84F2D3EC935DD8A /* Pods-ASCollectionComponent_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASCollectionComponent_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ASCollectionComponent_Tests/Pods-ASCollectionComponent_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C183C23162694397C664DE5E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		CA693995AAA3294C2542C397 /* Pods_ASCollectionComponent_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASCollectionComponent_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC754BC06479B68867CA9166 /* Pods_ASCollectionComponent_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASCollectionComponent_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +85,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				EAABD38F5877AF99844B610C /* Pods_ASCollectionComponent_Example.framework in Frameworks */,
+				A14BDF74E9FDC3B0BA5DBDA9 /* libPods-ASCollectionComponent_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +96,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				102BF8D70E4C4EB41B881FF5 /* Pods_ASCollectionComponent_Tests.framework in Frameworks */,
+				A028BD9A1016ECC60511FA8C /* libPods-ASCollectionComponent_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,8 +142,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				CA693995AAA3294C2542C397 /* Pods_ASCollectionComponent_Example.framework */,
-				CC754BC06479B68867CA9166 /* Pods_ASCollectionComponent_Tests.framework */,
+				0B70B80DCE47F87D21885611 /* libPods-ASCollectionComponent_Example.a */,
+				2FACD06F4407607C016A5CCB /* libPods-ASCollectionComponent_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -161,6 +163,7 @@
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				33DAD73A2911FB2B00DCCC6D /* ASCollectionComponent_Example-Bridging-Header.h */,
 			);
 			name = "Example for ASCollectionComponent";
 			path = ASCollectionComponent;
@@ -182,6 +185,7 @@
 			children = (
 				6003F5BB195388D20070C39A /* Tests.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
+				33DAD73D2911FB6300DCCC6D /* ASCollectionComponent_Tests-Bridging-Header.h */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -217,7 +221,6 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				805F7A3AAD76C1A2F956F8C3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -236,7 +239,6 @@
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				84AA538433213A802C86BD7B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,7 +260,11 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = arcangelw;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						LastSwiftMigration = 1410;
+					};
 					6003F5AD195388D20070C39A = {
+						LastSwiftMigration = 1410;
 						TestTargetID = 6003F589195388D20070C39A;
 					};
 				};
@@ -268,6 +274,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -321,56 +328,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		805F7A3AAD76C1A2F956F8C3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ASCollectionComponent_Example/Pods-ASCollectionComponent_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ASCollectionComponent/ASCollectionComponent.framework",
-				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
-				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
-				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Texture/AsyncDisplayKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASCollectionComponent.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ASCollectionComponent_Example/Pods-ASCollectionComponent_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		84AA538433213A802C86BD7B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ASCollectionComponent_Tests/Pods-ASCollectionComponent_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Expecta/Expecta.framework",
-				"${BUILT_PRODUCTS_DIR}/Expecta+Snapshots/Expecta_Snapshots.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSnapshotTestCase/FBSnapshotTestCase.framework",
-				"${BUILT_PRODUCTS_DIR}/Specta/Specta.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Expecta.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Expecta_Snapshots.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Specta.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ASCollectionComponent_Tests/Pods-ASCollectionComponent_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9560E831BC00BB34F1940B3F /* [CP] Check Pods Manifest.lock */ = {
@@ -485,7 +442,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -518,7 +475,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -530,13 +487,18 @@
 			baseConfigurationReference = 1C0D9055A9C371B474E05887 /* Pods-ASCollectionComponent_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ASCollectionComponent/ASCollectionComponent-Prefix.pch";
 				INFOPLIST_FILE = "ASCollectionComponent/ASCollectionComponent-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ASCollectionComponent/ASCollectionComponent_Example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -546,13 +508,17 @@
 			baseConfigurationReference = 055AB9AB6B68757DC13CE758 /* Pods-ASCollectionComponent_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ASCollectionComponent/ASCollectionComponent-Prefix.pch";
 				INFOPLIST_FILE = "ASCollectionComponent/ASCollectionComponent-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ASCollectionComponent/ASCollectionComponent_Example-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -562,6 +528,7 @@
 			baseConfigurationReference = 89999B57CA8D9059C6311AED /* Pods-ASCollectionComponent_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -574,8 +541,12 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/ASCollectionComponent_Tests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASCollectionComponent_Example.app/ASCollectionComponent_Example";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -586,6 +557,7 @@
 			baseConfigurationReference = BB16FDD9F84F2D3EC935DD8A /* Pods-ASCollectionComponent_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -594,8 +566,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/ASCollectionComponent_Tests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASCollectionComponent_Example.app/ASCollectionComponent_Example";
 				WRAPPER_EXTENSION = xctest;
 			};

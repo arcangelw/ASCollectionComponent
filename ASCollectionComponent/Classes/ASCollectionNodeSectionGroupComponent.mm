@@ -7,6 +7,7 @@
 #import "ASCollectionNodeComponent+Cache.h"
 #import "ASCollectionNodeComponent+Private.h"
 #import <vector>
+#import <objc/runtime.h>
 
 @implementation ASCollectionNodeSectionGroupComponent {
     std::vector<NSInteger> _numberOfSectionCache;
@@ -118,6 +119,11 @@
     return [comp collectionNode:collectionNode numberOfItemsInSection:section];
 }
 
+- (id)collectionNode:(ASCollectionNode *)collectionNode nodeModelForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = [self componentAtSection:indexPath.section];
+    return [comp collectionNode:collectionNode nodeModelForItemAtIndexPath:indexPath];
+}
+
 - (ASCellNode *)collectionNode:(ASCollectionNode *)collectionNode nodeForItemAtIndexPath:(NSIndexPath *)indexPath {
     ASCollectionNodeBaseComponent *comp = [self componentAtSection:indexPath.section];
     return [comp collectionNode:collectionNode nodeForItemAtIndexPath:indexPath];
@@ -214,15 +220,7 @@
     if ([comp respondsToSelector:_cmd]) {
         return [comp collectionNode:collectionNode constrainedSizeForItemAtIndexPath:indexPath];
     }
-    return ASSizeRangeUnconstrained;
-}
-
-- (ASSizeRange)collectionNode:(ASCollectionNode *)collectionNode sizeRangeForFooterInSection:(NSInteger)section {
-    ASCollectionNodeBaseComponent *comp = [self componentAtSection:section];
-    if ([comp respondsToSelector:_cmd]) {
-        return [comp collectionNode:collectionNode sizeRangeForFooterInSection:section];
-    }
-    return ASSizeRangeUnconstrained;
+    return ASSizeRangeZero;
 }
 
 - (ASSizeRange)collectionNode:(ASCollectionNode *)collectionNode sizeRangeForHeaderInSection:(NSInteger)section {
@@ -230,7 +228,15 @@
     if ([comp respondsToSelector:_cmd]) {
         return [comp collectionNode:collectionNode sizeRangeForHeaderInSection:section];
     }
-    return ASSizeRangeUnconstrained;
+    return ASSizeRangeZero;
+}
+
+- (ASSizeRange)collectionNode:(ASCollectionNode *)collectionNode sizeRangeForFooterInSection:(NSInteger)section {
+    ASCollectionNodeBaseComponent *comp = [self componentAtSection:section];
+    if ([comp respondsToSelector:_cmd]) {
+        return [comp collectionNode:collectionNode sizeRangeForFooterInSection:section];
+    }
+    return ASSizeRangeZero;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -257,6 +263,75 @@
     return 0;
 }
 
+#pragma mark - Interop
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = [self componentAtSection:indexPath.section];
+    return [comp collectionView:collectionView cellForItemAtIndexPath:indexPath];
+}
+
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = [self componentAtSection:indexPath.section];
+    return [comp collectionView:collectionView viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
+}
+
+
+- (CGSize)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = [self componentAtSection:indexPath.section];
+    if ([comp respondsToSelector:_cmd]) {
+        return [comp collectionView:collectionView layout:collectionViewLayout sizeForItemAtIndexPath:indexPath];
+    }
+    return CGSizeZero;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ASCollectionNodeBaseComponent *comp = [self componentAtSection:indexPath.section];
+    if ([comp respondsToSelector:_cmd]) {
+        [comp collectionView:collectionView willDisplayCell:cell forItemAtIndexPath:indexPath];
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ASCollectionNodeBaseComponent *comp = [self componentAtSection:indexPath.section];
+    if ([comp respondsToSelector:_cmd]) {
+        [comp collectionView:collectionView didEndDisplayingCell:cell forItemAtIndexPath:indexPath];
+    }
+}
+
+
+- (CGSize)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    ASCollectionNodeBaseComponent *comp = [self componentAtSection:section];
+    if ([comp respondsToSelector:_cmd]) {
+        return [comp collectionView:collectionView layout:collectionViewLayout referenceSizeForHeaderInSection:section];
+    }
+    return CGSizeZero;
+}
+
+- (CGSize)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    ASCollectionNodeBaseComponent *comp = [self componentAtSection:section];
+    if ([comp respondsToSelector:_cmd]) {
+        return [comp collectionView:collectionView layout:collectionViewLayout referenceSizeForFooterInSection:section];
+    }
+    return CGSizeZero;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = [self componentAtSection:indexPath.section];
+    if ([comp respondsToSelector:_cmd]) {
+        [comp collectionView:collectionView willDisplaySupplementaryView:view forElementKind:elementKind atIndexPath:indexPath];
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingSupplementaryView:(UICollectionReusableView *)view forElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = [self componentAtSection:indexPath.section];
+    if ([comp respondsToSelector:_cmd]) {
+        [comp collectionView:collectionView didEndDisplayingSupplementaryView:view forElementOfKind:elementKind atIndexPath:indexPath];
+    }
+}
+
 - (NSString *)debugDescription {
     NSMutableString *desc = [[NSMutableString alloc] initWithString:self.description];
     if (self.subComponents.count > 0) {
@@ -275,6 +350,7 @@
 @interface ASCollectionNodeRootComponent ()
 //@property (nonatomic, readwrite, weak) UICollectionView *collectionView;
 @property (nonatomic, weak) id<UIScrollViewDelegate> scrollDelegate;
+@property (nonatomic, assign) BOOL isInterop;
 @end
 
 @implementation ASCollectionNodeRootComponent
@@ -287,8 +363,17 @@
     _scrollDelegate = nil;
 }
 
-- (instancetype)initWithCollectionNode:(ASCollectionNode *)collectionNode {
-    return [self initWithCollectionNode:collectionNode bind:YES];
+- (instancetype)initWithCollectionNode:(ASCollectionNode *)collectionNode
+{
+    self = [super init];
+    if (self) {
+        self.collectionNode = collectionNode;
+        _isInterop = NO;
+        self.scrollDelegate = collectionNode.delegate;
+        collectionNode.dataSource = self;
+        collectionNode.delegate = self;
+    }
+    return self;
 }
 
 - (instancetype)initWithCollectionNode:(ASCollectionNode *)collectionNode bind:(BOOL)bind
@@ -296,6 +381,7 @@
     self = [super init];
     if (self) {
         self.collectionNode = collectionNode;
+        _isInterop = NO;
         if (bind) {
             self.scrollDelegate = collectionNode.delegate;
             collectionNode.dataSource = self;
@@ -303,6 +389,42 @@
         }
     }
     return self;
+}
+
+- (instancetype)initWithCollectionNode:(ASCollectionNode *)collectionNode isInterop:(BOOL)isInterop
+{
+    self = [super init];
+    if (self) {
+        self.collectionNode = collectionNode;
+        _isInterop = isInterop;
+        self.scrollDelegate = collectionNode.delegate;
+        collectionNode.dataSource = self;
+        collectionNode.delegate = self;
+    }
+    return self;
+}
+
+- (instancetype)initWithCollectionNode:(ASCollectionNode *)collectionNode bind:(BOOL)bind isInterop:(BOOL)isInterop
+{
+    self = [super init];
+    if (self) {
+        self.collectionNode = collectionNode;
+        _isInterop = isInterop;
+        if (bind) {
+            self.scrollDelegate = collectionNode.delegate;
+            collectionNode.dataSource = self;
+            collectionNode.delegate = self;
+        }
+    }
+    return self;
+}
+
+/// 拦截 ASCollectionDataSourceInterop 和 ASCollectionDelegateInterop
+- (BOOL)conformsToProtocol:(Protocol *)aProtocol {
+    if (aProtocol == @protocol(ASCollectionDataSourceInterop) || aProtocol == @protocol(ASCollectionDelegateInterop)) {
+        return _isInterop;
+    }
+    return [super conformsToProtocol:aProtocol];
 }
 
 - (ASCollectionNodeBaseComponent *)superComponent {
@@ -323,6 +445,27 @@
 
 - (void)reloadData {
     [self.collectionNode reloadData];
+}
+
+#pragma mark - Interop
++ (BOOL)dequeuesCellsForNodeBackedItems {
+    return NO;
+}
+
+- (ASCellNode *)collectionNode:(ASCollectionNode *)collectionNode nodeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ASCellNode *cellNode = [super collectionNode:collectionNode nodeForItemAtIndexPath:indexPath];
+    if (cellNode == ASComponentEmptyCellNode()) {
+        return nil;
+    }
+    return cellNode;
+}
+
+- (ASCellNode *)collectionNode:(ASCollectionNode *)collectionNode nodeForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    ASCellNode *cellNode = [super collectionNode:collectionNode nodeForSupplementaryElementOfKind:kind atIndexPath:indexPath];
+    if (cellNode == ASComponentEmptyCellNode()) {
+        return nil;
+    }
+    return cellNode;
 }
 
 #pragma mark - ScrollViewDelegate

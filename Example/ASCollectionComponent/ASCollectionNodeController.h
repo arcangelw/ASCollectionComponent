@@ -8,6 +8,6 @@
 
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 
-@interface ASCollectionNodeController : ASViewController
+@interface ASCollectionNodeController : ASDKViewController<ASCollectionNode *>
 
 @end

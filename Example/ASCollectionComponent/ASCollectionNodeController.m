@@ -19,12 +19,13 @@
 
 - (instancetype)init
 {
-    ASCollectionSectionPinToVisibleBoundsLayout *layout = [[ASCollectionSectionPinToVisibleBoundsLayout alloc] init];
-    layout.needSectionHeadersPinToVisibleBounds = YES;
-    layout.needSectionFootersPinToVisibleBounds = YES;
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.sectionHeadersPinToVisibleBounds = YES;
+    layout.sectionFootersPinToVisibleBounds = YES;
 //    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self = [super initWithNode:[[ASCollectionNode alloc] initWithCollectionViewLayout:layout]];
     if (self) {
+        self.node.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
@@ -36,17 +37,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.extendedLayoutIncludesOpaqueBars = YES;
-    if (@available(iOS 11.0, *)) {
-        ((ASCollectionNode *)self.node).view.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    } else {
-        self.automaticallyAdjustsScrollViewInsets = NO;
-    }
-    _rootComponent = [[ASCollectionNodeRootComponent alloc] initWithCollectionNode:(ASCollectionNode *)self.node];
+    _rootComponent = [[ASCollectionNodeRootComponent alloc] initWithCollectionNode:self.node isInterop:YES];
     ASMainComponent *mainComponent = [[ASMainComponent alloc] init];
     _rootComponent.subComponents = @[mainComponent];
-    
-    [((ASCollectionNode *)self.node) reloadData];
+    [self.node reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

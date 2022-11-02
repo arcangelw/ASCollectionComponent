@@ -11,8 +11,6 @@
 #endif
 
 #import "ASCollectionComponent.h"
-#import "ASCollectionNodeComponent+Cache.h"
-#import "ASCollectionNodeComponent+Private.h"
 #import "ASCollectionNodeComponent.h"
 #import "ASCollectionNodeItemComponent.h"
 #import "ASCollectionNodeSectionComponent.h"

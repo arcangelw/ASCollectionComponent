@@ -86,6 +86,11 @@
     return [self.currentComponent collectionNode:collectionNode numberOfItemsInSection:section];
 }
 
+- (id)collectionNode:(ASCollectionNode *)collectionNode nodeModelForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = self.currentComponent;
+    return [comp collectionNode:collectionNode nodeModelForItemAtIndexPath:indexPath];
+}
+
 - (ASCellNode *)collectionNode:(ASCollectionNode *)collectionNode nodeForItemAtIndexPath:(NSIndexPath *)indexPath {
     ASCollectionNodeBaseComponent *comp = self.currentComponent;
     return [comp collectionNode:collectionNode nodeForItemAtIndexPath:indexPath];
@@ -183,7 +188,7 @@
     if ([comp respondsToSelector:_cmd]) {
         return [comp collectionNode:collectionNode constrainedSizeForItemAtIndexPath:indexPath];
     }
-    return ASSizeRangeUnconstrained;
+    return ASSizeRangeZero;
 }
 
 - (ASSizeRange)collectionNode:(ASCollectionNode *)collectionNode sizeRangeForFooterInSection:(NSInteger)section {
@@ -191,7 +196,7 @@
     if ([comp respondsToSelector:_cmd]) {
         return [comp collectionNode:collectionNode sizeRangeForFooterInSection:section];
     }
-    return ASSizeRangeUnconstrained;
+    return ASSizeRangeZero;
 }
 
 - (ASSizeRange)collectionNode:(ASCollectionNode *)collectionNode sizeRangeForHeaderInSection:(NSInteger)section {
@@ -199,7 +204,7 @@
     if ([comp respondsToSelector:_cmd]) {
         return [comp collectionNode:collectionNode sizeRangeForHeaderInSection:section];
     }
-    return ASSizeRangeUnconstrained;
+    return ASSizeRangeZero;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -224,6 +229,75 @@
         return [comp collectionView:collectionView layout:collectionViewLayout minimumInteritemSpacingForSectionAtIndex:section];
     }
     return 0;
+}
+
+#pragma mark - Interop
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = self.currentComponent;
+    return [comp collectionView:collectionView cellForItemAtIndexPath:indexPath];
+}
+
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = self.currentComponent;
+    return [comp collectionView:collectionView viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
+}
+
+
+- (CGSize)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = self.currentComponent;
+    if ([comp respondsToSelector:_cmd]) {
+        return [comp collectionView:collectionView layout:collectionViewLayout sizeForItemAtIndexPath:indexPath];
+    }
+    return CGSizeZero;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ASCollectionNodeBaseComponent *comp = self.currentComponent;
+    if ([comp respondsToSelector:_cmd]) {
+        [comp collectionView:collectionView willDisplayCell:cell forItemAtIndexPath:indexPath];
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ASCollectionNodeBaseComponent *comp = self.currentComponent;
+    if ([comp respondsToSelector:_cmd]) {
+        [comp collectionView:collectionView didEndDisplayingCell:cell forItemAtIndexPath:indexPath];
+    }
+}
+
+
+- (CGSize)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    ASCollectionNodeBaseComponent *comp = self.currentComponent;
+    if ([comp respondsToSelector:_cmd]) {
+        return [comp collectionView:collectionView layout:collectionViewLayout referenceSizeForHeaderInSection:section];
+    }
+    return CGSizeZero;
+}
+
+- (CGSize)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    ASCollectionNodeBaseComponent *comp = self.currentComponent;
+    if ([comp respondsToSelector:_cmd]) {
+        return [comp collectionView:collectionView layout:collectionViewLayout referenceSizeForFooterInSection:section];
+    }
+    return CGSizeZero;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = self.currentComponent;
+    if ([comp respondsToSelector:_cmd]) {
+        [comp collectionView:collectionView willDisplaySupplementaryView:view forElementKind:elementKind atIndexPath:indexPath];
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingSupplementaryView:(UICollectionReusableView *)view forElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = self.currentComponent;
+    if ([comp respondsToSelector:_cmd]) {
+        [comp collectionView:collectionView didEndDisplayingSupplementaryView:view forElementOfKind:elementKind atIndexPath:indexPath];
+    }
 }
 
 - (NSString *)debugDescription {
@@ -296,7 +370,6 @@
             return [comp collectionNode:collectionNode nodeForSupplementaryElementOfKind:kind atIndexPath:indexPath];
         }
     }
-    NSAssert(false, @"%@ is nil!", kind);
     return nil;
 }
 
@@ -308,7 +381,7 @@
             return [comp collectionNode:collectionNode sizeRangeForHeaderInSection:section];
         }
     }
-    return ASSizeRangeUnconstrained;
+    return ASSizeRangeZero;
 }
 
 - (ASSizeRange)collectionNode:(ASCollectionNode *)collectionNode sizeRangeForFooterInSection:(NSInteger)section {
@@ -319,7 +392,7 @@
             return [comp collectionNode:collectionNode sizeRangeForFooterInSection:section];
         }
     }
-    return ASSizeRangeUnconstrained;
+    return ASSizeRangeZero;
 }
 
 
@@ -350,6 +423,73 @@
     }
     if ([comp respondsToSelector:_cmd]) {
         [comp collectionNode:collectionNode didEndDisplayingSupplementaryElementWithNode:node];
+    }
+}
+
+#pragma mark - Interop
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        ASCollectionNodeBaseComponent *comp = _headerComponent ?: _headerFooterComponent;
+        if ([comp respondsToSelector:_cmd]) {
+            return [comp collectionView:collectionView viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
+        }
+    }
+    else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        ASCollectionNodeBaseComponent *comp = _footerComponent ?: _headerFooterComponent;
+        if ([comp respondsToSelector:_cmd]) {
+            return [comp collectionView:collectionView viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
+        }
+    }
+    return nil;
+}
+
+- (CGSize)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    // header appear at first component
+    if (self.section == section) {
+        ASCollectionNodeBaseComponent *comp = _headerComponent ?: _headerFooterComponent;
+        if ([comp respondsToSelector:_cmd]) {
+            return [comp collectionView:collectionView layout:collectionViewLayout referenceSizeForHeaderInSection:section];
+        }
+    }
+    return CGSizeZero;
+}
+
+- (CGSize)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    // footer appear at last component
+    if (self.section + _numberOfSections - 1 == section) {
+        ASCollectionNodeBaseComponent *comp = _footerComponent ?: _headerFooterComponent;
+        if ([comp respondsToSelector:_cmd]) {
+            return [comp collectionView:collectionView layout:collectionViewLayout referenceSizeForFooterInSection:section];
+        }
+    }
+    return CGSizeZero;
+}
+
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = nil;
+    if ([elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
+        comp = _headerComponent ?: _headerFooterComponent;
+    }
+    else if ([elementKind isEqualToString:UICollectionElementKindSectionFooter]) {
+        comp = _footerComponent ?: _headerFooterComponent;
+    }
+    if ([comp respondsToSelector:_cmd]) {
+        [comp collectionView:collectionView willDisplaySupplementaryView:view forElementKind:elementKind atIndexPath:indexPath];
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingSupplementaryView:(UICollectionReusableView *)view forElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
+    ASCollectionNodeBaseComponent *comp = nil;
+    if ([elementKind isEqualToString:UICollectionElementKindSectionHeader]) {
+        comp = _headerComponent ?: _headerFooterComponent;
+    }
+    else if ([elementKind isEqualToString:UICollectionElementKindSectionFooter]) {
+        comp = _footerComponent ?: _headerFooterComponent;
+    }
+    if ([comp respondsToSelector:_cmd]) {
+        [comp collectionView:collectionView didEndDisplayingSupplementaryView:view forElementOfKind:elementKind atIndexPath:indexPath];
     }
 }
 

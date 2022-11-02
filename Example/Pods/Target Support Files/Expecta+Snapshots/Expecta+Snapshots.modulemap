@@ -1,4 +1,4 @@
-framework module Expecta_Snapshots {
+module Expecta_Snapshots {
   umbrella header "Expecta+Snapshots-umbrella.h"
 
   export *

@@ -1,4 +1,4 @@
-framework module Pods_ASCollectionComponent_Example {
+module Pods_ASCollectionComponent_Example {
   umbrella header "Pods-ASCollectionComponent_Example-umbrella.h"
 
   export *

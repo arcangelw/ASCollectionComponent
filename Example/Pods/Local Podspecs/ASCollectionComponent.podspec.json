@@ -1,6 +1,6 @@
 {
   "name": "ASCollectionComponent",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "summary": "A short description of ASCollectionComponent.",
   "homepage": "https://github.com/arcangelw/ASCollectionComponent",
   "license": {
@@ -12,15 +12,28 @@
   },
   "source": {
     "git": "https://github.com/arcangelw/ASCollectionComponent.git",
-    "tag": "0.1.0"
+    "tag": "0.2.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "10.0"
   },
-  "source_files": "ASCollectionComponent/Classes/**/*",
+  "swift_versions": "5.0",
+  "requires_arc": true,
+  "source_files": "ASCollectionComponent/Classes/**/*.{h,m,mm,swift}",
+  "public_header_files": "ASCollectionComponent/Classes/*.h",
+  "private_header_files": "ASCollectionComponent/Classes/Private/*.h",
+  "frameworks": [
+    "UIKit",
+    "Foundation"
+  ],
   "dependencies": {
-    "Texture": [
+    "Texture/Core": [
 
     ]
-  }
+  },
+  "user_target_xcconfig": {
+    "OTHER_LDFLAGS": "-ObjC",
+    "VALID_ARCHS": "x86_64 armv7 arm64"
+  },
+  "swift_version": "5.0"
 }

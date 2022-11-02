@@ -36,6 +36,25 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithCollectionNode:(ASCollectionNode *)collectionNode bind:(BOOL)bind;
 
+
+/**
+ Attach to a collection view. It will override its delegate and dataSource.
+ But it will not override scroll delegate.
+
+ @param collectionNode
+ @param isInterop Yes will override ASCollectionDelegateInterop and ASCollectionDataSourceInterop.
+ */
+- (instancetype)initWithCollectionNode:(ASCollectionNode *)collectionNode isInterop:(BOOL)isInterop;
+
+/**
+ Attach to a collection view. It will override its delegate and dataSource.
+ But it will not override scroll delegate.
+
+ @param collectionNode
+ @param bind Yes will override delegate and dataSource.
+ @param isInterop Yes will override ASCollectionDelegateInterop and ASCollectionDataSourceInterop.
+ */
+- (instancetype)initWithCollectionNode:(ASCollectionNode *)collectionNode bind:(BOOL)bind isInterop:(BOOL)isInterop;
 @end
 
 NS_ASSUME_NONNULL_END

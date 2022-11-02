@@ -7,6 +7,8 @@
 #import "ASCollectionNodeSectionComponent.h"
 #import "ASCollectionNodeSectionGroupComponent.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  This component is for status changing.
  For example, a request should has 'Loading', 'Error', 'Empty Data', 'Normal Data'.
@@ -45,3 +47,5 @@
 @property (strong, nonatomic, nullable) __kindof ASCollectionNodeSectionComponent *headerFooterComponent;
 
 @end
+
+NS_ASSUME_NONNULL_END

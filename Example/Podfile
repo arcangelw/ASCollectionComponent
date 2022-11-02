@@ -1,8 +1,11 @@
-use_frameworks!
 
 target 'ASCollectionComponent_Example' do
+  inhibit_all_warnings!
+  use_modular_headers!
+  platform :ios, '10.0'
   pod 'ASCollectionComponent', :path => '../'
-
+  pod 'Masonry'
+  pod 'LookinServer', :configurations => ['Debug']
   target 'ASCollectionComponent_Tests' do
     inherit! :search_paths
 

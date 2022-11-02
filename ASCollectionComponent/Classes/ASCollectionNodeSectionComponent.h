@@ -5,6 +5,8 @@
 
 #import "ASCollectionNodeComponent.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface ASCollectionNodeSectionComponent : ASCollectionNodeBaseComponent
 
 /**
@@ -39,3 +41,5 @@
 - (__kindof ASCollectionNodeBaseComponent * _Nullable)componentAtItem:(NSInteger)atItem;
 
 @end
+
+NS_ASSUME_NONNULL_END
